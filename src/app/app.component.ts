@@ -46,6 +46,7 @@ export class AppComponent {
     public dotPrecisionSeparatorFormModel: SN = '';
     public dotZeroPrecisionSeparatorFormModel!: SN;
     public commaSeparatorFormModel!: SN;
+    public intSpaceSeparatFormModel!: SN;
     public commaPrecisionSeparatorFormModel: SN = '';
     public commaZeroPrecisionSeparatorFormModel!: SN;
     public separatorPrecisionSeparatorForm: FormControl;
@@ -53,6 +54,7 @@ export class AppComponent {
     public dotSeparatorForm!: FormControl;
     public dotPrecisionSeparatorForm!: FormControl;
     public dotZeroPrecisionSeparatorForm!: FormControl;
+    public intSpaceSeparat!: FormControl;
     public commaSeparatorForm!: FormControl;
     public commaPrecisionSeparatorForm!: FormControl;
     public commaZeroPrecisionSeparatorForm!: FormControl;
@@ -74,6 +76,7 @@ export class AppComponent {
         this.dotPrecisionSeparatorForm = new FormControl(0);
         this.dotZeroPrecisionSeparatorForm = new FormControl('');
         this.commaSeparatorForm = new FormControl('');
+        this.intSpaceSeparat = new FormControl('');
         this.commaPrecisionSeparatorForm = new FormControl(0);
         this.commaZeroPrecisionSeparatorForm = new FormControl('');
         this.percent = new FormControl('');

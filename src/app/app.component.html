@@ -480,7 +480,10 @@
       </div>
     </div>
   </div>
+
+  <!-- region thousand separator -->
   <div class="container">
+
     <div class="row">
       <div class="col-12">
         <div class="mat-card-wr">
@@ -491,7 +494,10 @@
                 You can divide your input by thousands
               </mat-card-subtitle>
             </mat-card-header>
+
             <mat-card-content>
+
+              <!-- 2-2-3 -->
               <div class="flex-row">
                 <div class="flex-cell-padding">
                   <mat-form-field>
@@ -511,6 +517,8 @@
                   <p><b>NgModel:</b> {{ separatorFormModel ? separatorFormModel : 'Empty' }}</p>
                 </div>
               </div>
+
+              <!-- 3-3-3 -->
               <div class="flex-row">
                 <div class="flex-cell-padding">
                   <mat-form-field>
@@ -519,7 +527,7 @@
                       placeholder="3-3-3"
                       prefix="$"
                       mask="int_comma_separated"
-                      [dropSpecialCharacters]="false"
+                      [dropSpecialCharacters]="true"
                       [formControl]="dotSeparatorForm"
                       [(ngModel)]="dotSeparatorFormModel"
                     />
@@ -534,6 +542,8 @@
                   <p><b>NgModel:</b> {{ dotSeparatorFormModel ? dotSeparatorFormModel : 'Empty' }}</p>
                 </div>
               </div>
+
+              <!-- 3 3 3 -->
               <div class="flex-row">
                 <div class="flex-cell-padding">
                   <mat-form-field>
@@ -542,8 +552,8 @@
                       placeholder="3 3 3"
                       prefix="$"
                       mask="int_space_separated"
-                      [formControl]="commaSeparatorForm"
-                      [(ngModel)]="commaSeparatorFormModel"
+                      [formControl]="intSpaceSeparat"
+                      [(ngModel)]="intSpaceSeparatFormModel"
                     />
                     <mat-hint><b>Mask: </b>comma_separator</mat-hint>
                   </mat-form-field>
@@ -551,14 +561,16 @@
                 <div class="flex-cell">
                   <p>
                     <b>FormControl:</b>
-                    {{ commaSeparatorForm.value ? commaSeparatorForm.value : 'Empty' }}
+                    {{ intSpaceSeparat.value ? intSpaceSeparat.value : 'Empty' }}
                   </p>
                   <p>
                     <b>NgModel:</b>
-                    {{ commaSeparatorFormModel ? commaSeparatorFormModel : 'Empty' }}
+                    {{ intSpaceSeparatFormModel ? intSpaceSeparatFormModel : 'Empty' }}
                   </p>
                 </div>
               </div>
+
+              <!-- 3'3'3 -->
               <div class="flex-row">
                 <div class="flex-cell-padding">
                   <mat-form-field>
@@ -589,8 +601,12 @@
         </div>
       </div>
     </div>
+
   </div>
+  <!-- ednregion -->
+
   <div class="container">
+
     <div class="row">
       <div class="col-12">
         <div class="mat-card-wr">
@@ -798,8 +814,11 @@
         </div>
       </div>
     </div>
+
   </div>
+
   <div class="container">
+
     <div class="row">
       <div class="col-12">
         <div class="mat-card-wr">
@@ -824,6 +843,7 @@
       </div>
     </div>
   </div>
+
   <div class="container">
     <div class="row">
       <div class="col-12">
