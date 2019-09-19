@@ -159,38 +159,45 @@ export class MaskApplierService {
         strForSep = inputValue.replace(/,/g, '');
         result = this.currencySeparator(strForSep, ',', '.', precision, true);
       } else if (maskExpression.startsWith(Separators.INT_SPACE_SEPARATED)) {
-        strForSep = inputValue.replace(/ /g, '');
+        strForSep = inputValue.replace(/[ ,']/g, '');
         result = this.currencySeparator(strForSep, ' ', '.', precision);
       } else if (maskExpression.startsWith(Separators.INT_COMMA_SEPARATED)) {
         strForSep = inputValue.replace(/,/g, '');
         result = this.currencySeparator(strForSep, ',', '.', precision);
       } else if (maskExpression.startsWith(Separators.INT_APOSTROPHE_SEPARATED)) {
-        strForSep = inputValue.replace(/'/g, '');
+        strForSep = inputValue.replace(/[ ,']/g, '');
         result = this.currencySeparator(strForSep, '\'', '.', precision);
       }
 
       const commaShift: number = result.indexOf(',') - inputValue.indexOf(',');
       const shiftStep: number = result.length - inputValue.length;
 
-      if (shiftStep > 0 && result[position] !== ',') {
-        backspaceShift = true;
-        let _shift: number = 0;
-        do {
-          this._shift.add(position + _shift);
-          _shift++;
-        } while (_shift < shiftStep);
-      } else if (
-        (commaShift !== 0 && position > 0 && !(result.indexOf(',') >= position && position > 3)) ||
-        (!(result.indexOf('.') >= position && position > 3) && shiftStep <= 0)
-      ) {
-        this._shift.clear();
-        backspaceShift = true;
-        shift = shiftStep;
-        position += shiftStep;
-        this._shift.add(position);
-      } else {
-        this._shift.clear();
+      // position shifting issue fixed for custom separators
+      if (!(maskExpression.startsWith(Separators.IND_COMMA_SEPARATED) ||
+        maskExpression.startsWith(Separators.INT_APOSTROPHE_SEPARATED) ||
+        maskExpression.startsWith(Separators.INT_COMMA_SEPARATED) ||
+        maskExpression.startsWith(Separators.INT_SPACE_SEPARATED))) {
+        if (shiftStep > 0 && result[position] !== ',') {
+          backspaceShift = true;
+          let _shift: number = 0;
+          do {
+            this._shift.add(position + _shift);
+            _shift++;
+          } while (_shift < shiftStep);
+        } else if (
+          (commaShift !== 0 && position > 0 && !(result.indexOf(',') >= position && position > 3)) ||
+          (!(result.indexOf('.') >= position && position > 3) && shiftStep <= 0)
+        ) {
+          this._shift.clear();
+          backspaceShift = true;
+          shift = shiftStep;
+          position += shiftStep;
+          this._shift.add(position);
+        } else {
+          this._shift.clear();
+        }
       }
+
     } else {
       for (
         // tslint:disable-next-line
